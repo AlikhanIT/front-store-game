@@ -1,0 +1,7 @@
+.button {
+  right: 0;
+  @media (max-width: 350px) {
+    transform: scale(0.75);
+    right: -38.5px;
+  }
+}
