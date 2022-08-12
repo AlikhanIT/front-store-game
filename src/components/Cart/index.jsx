@@ -13,18 +13,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {clearCart, removeItem} from "../../redux/slices/cartSlice";
 
 export default function Cart() {
-    const { items } = useSelector(state => state.cartReducer);
+    const { items, totalPrice } = useSelector(state => state.cartReducer);
     const dispatch = useDispatch();
-
-    const a = items.reduce(
-        (prev, tec) => {
-            if (prev.price) {
-                return Number(prev.price) + Number(tec.price);
-            } else {
-                return prev + Number(tec.price);
-            }
-        },
-    );
 
     return (
             <Accordion style={{ overflow: "hidden" }} sx={{width: "100%"}} >
@@ -67,7 +57,7 @@ export default function Cart() {
                                     <ListItem disablePadding sx={{mt: 3, mb: 3}}>
                                         <Typography sx={{width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textAlign: "center" }}>
                                             Общая сумма {
-                                                a
+                                                totalPrice
                                         }
                                         </Typography>
                                     </ListItem>
