@@ -16,6 +16,14 @@ export default function Cart() {
     const { items, totalPrice } = useSelector(state => state.cartReducer);
     const dispatch = useDispatch();
 
+    const a = items.length === 0 ? 0 : items.reduce((prev, cur) => {
+        if (prev.price) {
+            return prev.price + cur.price;
+        } else {
+            return prev + cur.price
+        }
+    })
+
     return (
             <Accordion style={{ overflow: "hidden" }} sx={{width: "100%"}} >
                 <AccordionSummary
@@ -57,7 +65,7 @@ export default function Cart() {
                                     <ListItem disablePadding sx={{mt: 3, mb: 3}}>
                                         <Typography sx={{width: "100%", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textAlign: "center" }}>
                                             Общая сумма {
-                                                totalPrice
+                                                items.length === 1 ? a.price : a
                                         }
                                         </Typography>
                                     </ListItem>

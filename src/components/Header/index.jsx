@@ -23,7 +23,7 @@ export default function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [isReg, setIsReg] = React.useState(true);
   const {isAuth} = useSelector(state => state.userReducer);
-  const {items, totalPrice} = useSelector(state => state.cartReducer);
+  const {items} = useSelector(state => state.cartReducer);
   const dispatch = useDispatch();
 
   const isMounted = useRef(false);
@@ -31,10 +31,9 @@ export default function Header() {
   useEffect(() => {
     if (isMounted) {
       window.localStorage.setItem("cart", JSON.stringify(items));
-      window.localStorage.setItem("carttotalPrice", JSON.stringify(totalPrice));
     }
     isMounted.current = true;
-  }, [items, totalPrice])
+  }, [items])
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
