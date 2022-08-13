@@ -9,12 +9,8 @@ import styles from "./AddPost.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchCreatePost, fetchEditPost, fetchOnePost, setDefault} from "../redux/slices/postSlice";
 import axios, {BACK_URL} from "../redux/http/index";
-import {API_URL} from "../redux/http";
 import {Formik} from "formik";
 import * as yup from "yup";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
 import {DialogActions, DialogContentText} from "@mui/material";
 
 export const AddPost = () => {
@@ -162,9 +158,9 @@ export const AddPost = () => {
                     <TextField
                         classes={{ root: styles.title }}
                         variant="standard"
-                        value={values.title}
+                        value={title}
                         name={"title"}
-                        onChange={handleChange}
+                        onChange={(event) => {setTitle(event.target.value); return handleChange(event)}}
                         onBlur={handleBlur}
                         placeholder="Название товара..."
                         fullWidth
@@ -183,10 +179,8 @@ export const AddPost = () => {
                         classes={{ root: styles.price }}
                         variant="standard"
                         value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        value={values.price}
                         name={"price"}
-                        onChange={handleChange}
+                        onChange={(event) => {setPrice(event.target.value); return handleChange(event)}}
                         onBlur={handleBlur}
                         placeholder="Цена товара..."
                         fullWidth

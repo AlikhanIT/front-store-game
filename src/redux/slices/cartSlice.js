@@ -19,7 +19,9 @@ const cartSlice = createSlice({
         },
         removeItem: (state, action) => {
             const remItemPrice = state.items.find(obj => obj._id === action.payload);
-            state.totalPrice -= +remItemPrice.price;
+            if (state.totalPrice > 0) {
+                state.totalPrice -= +remItemPrice.price;
+            }
             state.items = state.items.filter((item) => item._id !== action.payload);
         },
         clearCart: (state) => {
