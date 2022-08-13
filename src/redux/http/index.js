@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const API_URL = procces.env.REACT_APP_API_URL;
-export const BACK_URL = procces.env.REACT_APP_BACK_URL;
+export const API_URL = "http://192.168.1.105:5000/api";
+export const BACK_URL = "http://192.168.1.105:5000";
 
 const $api = axios.create({
     withCredentials: true,
