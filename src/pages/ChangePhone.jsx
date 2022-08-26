@@ -23,7 +23,6 @@ export const ChangePhone = () => {
         }));
         setText("");
         dispatch(setDefault());
-        // window.location.pathname = "/";
     };
 
     const onChange = React.useCallback((value) => {
