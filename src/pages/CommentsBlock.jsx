@@ -48,7 +48,7 @@ export const CommentsBlock = () => {
                         primary={obj.user.name}
                         secondary={`⠀⠀${obj.text}`}
                     />)}
-                    {isAdmin || (userId == obj?.user._id) ? <div className={styles.editButtons}>
+                    {isAdmin || (userId === obj?.user._id) ? <div className={styles.editButtons}>
                         <IconButton color="primary" onClick={() => {
                             onClickEdit(obj.text, obj._id)
                         }}>

@@ -1,15 +1,11 @@
 import React, {useEffect, useRef} from "react";
-import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import SimpleMDE from "react-simplemde-editor";
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import "easymde/dist/easymde.min.css";
 import styles from "./AddPost.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    fetchCreatePost,
-    fetchEditPost,
     setDefault,
 } from "../redux/slices/postSlice";
 import axios, {BACK_URL} from "../redux/http/index";

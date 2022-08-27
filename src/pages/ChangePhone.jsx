@@ -4,12 +4,11 @@ import Button from "@mui/material/Button";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import styles from "./AddPost.module.scss";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {
     setDefault,
 } from "../redux/slices/postSlice";
 import {Alert} from "@mui/material";
-import {fetchCreateComment, fetchEditComment} from "../redux/slices/commentSlice";
 import {fetchCreatePhone} from "../redux/slices/phoneSlice";
 
 export const ChangePhone = () => {

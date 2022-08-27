@@ -24,7 +24,9 @@ export const fetchLogout = createAsyncThunk("user/fetchLogout", async () => {
 });
 
 export const fetchCheckAuth = createAsyncThunk("user/CheckAuth", async () => {
-  const { data } = await axios.get(`${API_URL}/refresh`, {
+  const param = {refreshToken: `${JSON.stringify(window.localStorage.getItem("refreshToken")).split('"')[1]}`};
+  console.log(param.refreshToken)
+  const { data } = await axios.post(`${API_URL}/refresh`, param, {
     withCredentials: true,
   });
   return data;
@@ -52,6 +54,7 @@ const userSlice = createSlice({
     },
     [fetchLogin.fulfilled]: (state, action) => {
       window.localStorage.setItem("token", action.payload.accessToken);
+      window.localStorage.setItem("refreshToken", action.payload.refreshToken);
       state.isAuth = true;
       state.userId = action.payload.userId;
       state.avatarUrl = action.payload.imageUrl;
@@ -72,6 +75,7 @@ const userSlice = createSlice({
     },
     [fetchRegister.fulfilled]: (state, action) => {
       window.localStorage.setItem("token", action.payload.accessToken);
+      window.localStorage.setItem("refreshToken", action.payload.refreshToken);
       state.isAuth = true;
       state.userId = action.payload.userId;
       state.avatarUrl = "";
@@ -92,6 +96,7 @@ const userSlice = createSlice({
     },
     [fetchCheckAuth.fulfilled]: (state, action) => {
       window.localStorage.setItem("token", action.payload.accessToken);
+      window.localStorage.setItem("refreshToken", action.payload.refreshToken);
       state.isAuth = true;
       state.userId = action.payload.userId;
       state.avatarUrl = action.payload.imageUrl;

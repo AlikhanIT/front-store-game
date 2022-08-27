@@ -1,6 +1,5 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import $api, {BACK_URL} from "../http";
-import {fetchDeleteHelp} from "./helpSlice";
 
 export const fetchSlider = createAsyncThunk(
     "slider/fetchSlider",
